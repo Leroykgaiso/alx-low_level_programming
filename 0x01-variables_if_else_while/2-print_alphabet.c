@@ -1,5 +1,6 @@
 #include <stdio.h>
-
+/*main -prints alphabet in lowercase
+ */
 int main(void)
 {
 char c = 'a';
@@ -9,5 +10,5 @@ putchar(c);
 c++;
 }
 putchar('\n');
-return 0;
+return (0);
 }
