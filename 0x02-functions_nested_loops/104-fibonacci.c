@@ -1,26 +1,24 @@
 #include <stdio.h>
 
 /**
- * main - prints the first 100 numbers in the fibonacci sequence
- * Return: 0
-*/
-
+ *main - returns the first 100 numbers in the fibonacci sequence
+ *Return:0
+ */
 int main(void)
 {
-	int a = 1;
-	int b = 2;
+	int a = 1, b = 2, c, i;
 
-	printf("%d\n", a);
-	printf("%d\n", b);
+	printf("%d, %d", a, b);
 
-	int sum;
-
-	for (int i = 3; i <= 100; i++)
+	for (i = 0; i < 98; i++)
 	{
-		sum = a + b;
-		printf("%d\n", sum);
+		c = a + b;
 		a = b;
-		b = sum;
+		b = c;
+		printf(", %d", c);
 	}
+
+	printf("\n");
+
 	return (0);
 }
