@@ -2,41 +2,58 @@
 
 /**
  * main - main block
- * Description: computes and prints the sum of all the multiples of 3 or
- * 5 below 1024 (excluded), followed by a new line
+ * Description: Prints the first 98 Fibonacci numbers
  * Return: 0
  */
 int main(void)
 {
-	unsigned long int i;
-	unsigned long int bef = 1;
-	unsigned long int aft = 2;
-	unsigned long int l = 1000000000;
-	unsigned long int bef1;
-	unsigned long int bef2;
-	unsigned long int aft1;
-	unsigned long int aft2;
+	int c;
+	int boolean;
+	int boolean2;
+	long int n1;
+	long int n2;
+	long int fn;
+	long int fn2;
+	long int n11;
+	long int n22;
 
-	printf("%lu", bef);
+	n1 = 1;
+	n2 = 2;
+	boolean = 1;
+	boolean2 = 1;
+	printf("%ld, %ld", n1, n2);
 
-	for (i = 1; i < 91; i++)
+	for (c = 0; c < 96; c++)
 {
-	printf(", %lu", aft);
-	aft += bef;
-	bef = aft - bef;
+	if (boolean)
+{
+	fn = n1 + n2;
+	printf(", %ld", fn);
+	n1 = n2;
+	n2 = fn;
 }
-
-	bef1 = (bef / l);
-	bef2 = (bef % l);
-	aft1 = (aft / l);
-	aft2 = (aft % l);
-
-	for (i = 92; i < 99; ++i)
+	else
 {
-	printf(", %lu", aft1 + (aft2 / l));
-	printf("%lu", aft2 % l);
-	aft1 = aft1 + bef1;
-	bef1 = aft1 - bef1;
-	aft2 = aft2 + bef2;
-	bef2 = aft2 - bef2;
+	if (boolean2)
+{
+	n11 = n1 % 1000000000;
+	n22 = n2 % 1000000000;
+	n1 = n1 / 1000000000;
+	n2 = n2 / 1000000000;
+	boolean2 = 0;
+}
+	fn2 = (n11 + n22);
+	fn = n1 + n2 + (fn2 / 1000000000);
+	printf(", %ld", fn);
+	printf("%ld", fn2 % 1000000000);
+	n1 = n2;
+	n11 = n22;
+	n2 = fn;
+	n22 = (fn2 % 1000000000);
+}
+	if (((n1 + n2) < 0) && boolean == 1)
+	boolean = 0;
+}
+	printf("\n");
+	return (0);
 }
