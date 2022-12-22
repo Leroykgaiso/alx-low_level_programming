@@ -1,15 +1,31 @@
 #include "main.h"
 
 /**
- * main - print triangle
- *
- * Return: Always 0.
+ * _print_triangle - prints a triangle made of # characters
+ * @size: the number of lines in the triangle
+ * Return: void
  */
-int main(void)
+void _print_triangle(int size)
 {
-	print_triangle(2)
-	print_triangle(10)
-	print_triangle(1)
-	print_triangle(2)
-	return (0);
+	int i, j;
+
+	if (size <= 0)
+	{
+		_putchar('\n');
+	}
+	else
+	{
+		for (i = 1; i <= size; i++)
+		{
+			for (j = i; j < size; j++)
+			{
+				_putchar(' ');
+			}
+			for (j = 1; j <= i; j++)
+			{
+				_putchar('#');
+			}
+			_putchar('\n');
+		}
+	}
 }
