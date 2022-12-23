@@ -1,30 +1,25 @@
-#include "main.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 /**
- * rot13 - encodes a string using the ROT13 algorithm
- * @s: pointer to the string to encode
+ * main - Generates random valid passwords
  *
- * Return: pointer to the encoded string
+ * Return: 0 on success
  */
-char *rot13(char *s)
+int main(void)
 {
-	int i;
-	int j;
-	char data1[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char datarot[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	int pass;
+	int sum = 0;
 
-	for (i = 0; s[i] != '\0'; i++)
+	srand(time(NULL));
+	while (sum <= 2645)
 	{
-		for (j = 0; j < 52; j++)
-		{
-			if (s[i] == data1[j])
-			{
-				s[i] = datarot[j];
-				break;
-			}
-		}
+		pass = (rand() % 128);
+		sum += pass;
+		printf("%c", pass);
 	}
+	printf("%c", 2772 - sum);
 
-	return (s);
+	return (0);
 }
