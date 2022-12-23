@@ -1,25 +1,22 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include "main.h"
 
 /**
- * main - Generates random valid passwords
- *
- * Return: 0 on success
+ * print_number - prints an integer to the standard output
+ * @n: integer value to be printed
  */
-int main(void)
+void print_number(int n)
 {
-	int pass;
-	int sum = 0;
+	unsigned int num = n;
 
-	srand(time(NULL));
-	while (sum <= 2645)
+	if (n < 0)
 	{
-		pass = (rand() % 128);
-		sum += pass;
-		printf("%c", pass);
+		_putchar('-');
+		num = -num;
 	}
-	printf("%c", 2772 - sum);
 
-	return (0);
+	if ((num / 10) > 0)
+	{
+		print_number(num / 10);
+	}
+	_putchar((num % 10) + '0');
 }
