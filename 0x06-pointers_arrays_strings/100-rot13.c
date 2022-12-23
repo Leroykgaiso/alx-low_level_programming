@@ -2,30 +2,28 @@
 #include <stdio.h>
 
 /**
- * rot13 - apply the ROT13 substitution cipher to a string
- * @s: the string to be modified
+ * main - check the code
  *
- * Return: the modified string
+ * Return: Always 0.
  */
-char *rot13(char *s)
+int main(void)
 {
-	int a = 0;
+	char s[] = "ROT13 (\"rotate by 13 places\", sometimes hyphenated ROT-13) is a simple letter substitution cipher.\n";
+	char *p;
 
-	while (s[a])
-	{
-		if ((s[a] >= 'a' && s[a] <= 'z') || (s[a] >= 'A' && s[a] <= 'Z'))
-		{
-			if ((s[a] > 'm' && s[a] <= 'z') || (s[a] > 'M' && s[a] <= 'Z'))
-			{
-				s[a] -= 13;
-			}
-			else
-			{
-				s[a] += 13;
-			}
-		}
-		a++;
-	}
-
-	return (s);
+	p = rot13(s);
+	printf("%s", p);
+	printf("------------------------------------\n");
+	printf("%s", s);
+	printf("------------------------------------\n");
+	p = rot13(s);
+	printf("%s", p);
+	printf("------------------------------------\n");
+	printf("%s", s);
+	printf("------------------------------------\n");
+	p = rot13(s);
+	printf("%s", p);
+	printf("------------------------------------\n");
+	printf("%s", s);
+	return (0);
 }
