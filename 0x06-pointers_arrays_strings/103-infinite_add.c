@@ -1,108 +1,53 @@
 #include "main.h"
 
 /**
- * rev_string - Reverse the characters in a string
- * @n: Pointer to the string
+ * infinite_add - adds two numbers
+ * @n1: first number
+ * @n2: second number
+ * @r: buffer for result
+ * @size_r: buffer size
  *
- * Return: void
- */
-void rev_string(char *n)
-{
-	int i = 0;
-	int j = 0;
-	char temp;
-
-	while (*(n + i) != '\0')
-	{
-		i++;
-	}
-	i--;
-
-	for (j = 0; j < i; j++, i--)
-	{
-		temp = *(n + j);
-		*(n + j) = *(n + i);
-		*(n + i) = temp;
-	}
-}
-
-/**
- * infinite_add - Add two numbers together
- * @n1: Pointer to the string representation of the first number
- * @n2: Pointer to the string representation of the second number
- * @r: Pointer to the buffer where the result will be stored
- * @size_r: Size of the buffer
- *
- * Return: Pointer to the result
+ * Return: address of r or 0
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int overflow = 0;
-	int i = 0;
-	int j = 0;
-	int digits = 0;
-	int val1 = 0;
-	int val2 = 0;
-	int temp_tot = 0;
+	int i, j, k, l, m, n;
 
-	while (*(n1 + i) != '\0')
-	{
-		i++;
-	}
-	while (*(n2 + j) != '\0')
-	{
-		j++;
-	}
-	i--;
-	j--;
-
-	if (j >= size_r || i >= size_r)
+	for (i = 0; n1[i]; i++) {}
+	for (j = 0; n2[j]; j++) {}
+	if (i > size_r || j > size_r)
 	{
 		return (0);
 	}
-
-	while (j >= 0 || i >= 0 || overflow == 1)
+	m = 0;
+	for (i -= 1, j -= 1, k = 0; k < size_r - 1; i--, j--, k++)
 	{
-		if (i < 0)
+		n = m;
+		if (i >= 0)
 		{
-			val1 = 0;
+			n += n1[i] - '0';
 		}
-		else
+		if (j >= 0)
 		{
-			val1 = *(n1 + i) - '0';
+			n += n2[j] - '0';
 		}
-		if (j < 0)
+		if (i < 0 && j < 0 && n == 0)
 		{
-			val2 = 0;
+			break;
 		}
-		else
-		{
-			val2 = *(n2 + j) - '0';
-		}
-		temp_tot = val1 + val2 + overflow;
-		if (temp_tot >= 10)
-		{
-			overflow = 1;
-		}
-		else
-		{
-			overflow = 0;
-		}
-		if (digits >= (size_r - 1))
-		{
-			return (0);
-		}
-		*(r + digits) = (temp_tot % 10) + '0';
-		digits++;
-		j--;
-		i--;
+		m = n / 10;
+		r[k] = n % 10 + '0';
 	}
-
-	if (digits == size_r)
+	r[k] = '\0';
+	if (i >= 0 || j >= 0 || m)
 	{
 		return (0);
 	}
-	*(r + digits) = '\0';
-	rev_string(r);
+	for (k -= 1, l = 0; l < k; k--, l++)
+	{
+		m = r[k];
+		r[k] = r[l];
+		r[l] = m;
+	}
 	return (r);
 }
