@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * print_number - prints an integer to the standard output
+ * print_numbers - prints an integer to the standard output
  * @n: the integer to be printed
  */
-void print_number(int n)
+void print_numbers(int n)
 {
 	unsigned int n1;
 
