@@ -2,10 +2,11 @@
 #include <stdio.h>
 
 /**
- * print_numbers - prints an integer to the standard output
+ * print_number - prints an integer to the standard output
  * @n: the integer to be printed
+ * Return: void
  */
-void print_numbers(int n)
+void print_number(int n)
 {
 	unsigned int n1;
 
